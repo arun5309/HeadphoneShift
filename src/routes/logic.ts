@@ -4,6 +4,20 @@ export enum GameState {
 	FINISH
 }
 
+export type GetPointsResponse = {
+	uid: number | null;
+	points: number | null;
+	actual_pin: string;
+};
+
+export type CreateInstanceResponse = {
+	iid: number;
+};
+
+export type UpdateInstanceResponse = {
+	iid: number;
+};
+
 export function rand_digit(): number {
 	for (;;) {
 		const array = new Uint8Array(1);
