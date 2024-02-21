@@ -160,7 +160,7 @@
 <h1>Headphone Shift</h1>
 
 {#if game_state === GameState.START}
-	<input type="text" placeholder="User ID" bind:value={uid} on:change={normalize} maxlength="6" />
+	<input type="text" placeholder="User ID" bind:value={uid} on:change={normalize} maxlength="6" name="userid" id="userid" />
 	{#if uid_valid}
 		{#await get_points()}
 			<p>Validating User ID...</p>
