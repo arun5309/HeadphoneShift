@@ -37,11 +37,11 @@
 
 	function press_handler(i: number) {
 		const temp = (((i - shift_digit) % 10) + 10) % 10;
-		if (value.length == 4) return;
+		if (value.length === 4) return;
 		value += String(i);
 		pin += String(temp);
 
-		if (value.length == 4) return;
+		if (value.length === 4) return;
 		shift_digit = rand_digit();
 		say_num(shift_digit);
 	}
@@ -94,7 +94,7 @@
 	}
 
 	function check_uid_valid(uid_cand: string): boolean {
-		return uid_cand.length == 6 && isAlphaNumeric(uid_cand);
+		return uid_cand.length === 6 && isAlphaNumeric(uid_cand);
 	}
 
 	function progress_transition() {
@@ -146,7 +146,7 @@
 	}
 
 	function enter_handler() {
-		if (value.length == 4) {
+		if (value.length === 4) {
 			finish_transition();
 		}
 	}
