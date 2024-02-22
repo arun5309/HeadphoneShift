@@ -52,6 +52,7 @@
 	$: uid_valid = check_uid_valid(uid);
 	let iid: number = -1;
 	let actual_pin: string = '';
+	const USER_ID_LENGTH = 3;
 
 	function reset() {
 		value = '';
@@ -95,7 +96,7 @@
 	}
 
 	function check_uid_valid(uid_cand: string): boolean {
-		return uid_cand.length === 6 && isAlphaNumeric(uid_cand);
+		return uid_cand.length === USER_ID_LENGTH && isAlphaNumeric(uid_cand);
 	}
 
 	function progress_transition() {
@@ -184,7 +185,7 @@
 		placeholder="User ID"
 		bind:value={uid}
 		on:change={normalize}
-		maxlength="6"
+		maxlength={USER_ID_LENGTH}
 		name="userid"
 		id="userid"
 	/>
