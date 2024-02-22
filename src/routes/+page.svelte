@@ -12,7 +12,7 @@
 	import { GameState, rand_digit } from './logic';
 	import type { GetPointsResponse, CreateInstanceResponse, UpdateInstanceResponse } from './logic';
 	import Keypad from './Keypad.svelte';
-	let banner = '../src/routes/Banners_Headphone_Shift.jpg';
+	import banner from '$lib/images/Banners_Headphone_Shift.png';
 
 	let value = '';
 	let pin = '';
