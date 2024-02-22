@@ -150,6 +150,21 @@
 			finish_transition();
 		}
 	}
+	function gameHeader(num: number) {
+		if (num === 1) {
+			return '1st';
+		} else if (num === 2) {
+			return '2nd';
+		} else if (num === 3) {
+			return '3rd';
+		} else if (num === 4) {
+			return '4th';
+		} else if (num > 4) {
+			return '4th';
+		} else {
+			console.log('wrong input passed to gameHeader function');
+		}
+	}
 </script>
 
 <svelte:head>
@@ -157,10 +172,19 @@
 	<meta name="description" content="Headphone Shift PIN Entry" />
 </svelte:head>
 
-<h1>Headphone Shift</h1>
+<!-- <h1>Headphone Shift</h1> -->
 
 {#if game_state === GameState.START}
-	<input type="text" placeholder="User ID" bind:value={uid} on:change={normalize} maxlength="6" name="userid" id="userid" />
+	<h1>Headphone Shift</h1>
+	<input
+		type="text"
+		placeholder="User ID"
+		bind:value={uid}
+		on:change={normalize}
+		maxlength="6"
+		name="userid"
+		id="userid"
+	/>
 	{#if uid_valid}
 		{#await get_points()}
 			<p>Validating User ID...</p>
@@ -179,12 +203,23 @@
 	<br />
 	<button on:click={progress_transition}>Start Game</button>
 {:else if game_state === GameState.PROGRESS}
+	<h2 style="font-size:1.2em;text-align:center;">
+		<strong>{gameHeader(value.length + 1)} digit</strong>
+	</h2>
+
 	<input type="number" placeholder="Enter shifted PIN" bind:value readonly />
 	<br />
 	<Keypad {bkspc_handler} {enter_handler} {press_handler} />
+	<h2 style="font-size:1em;text-align:center">
+		Listen to the <strong>Shift Value</strong>, then <strong>add</strong> your
+		<strong>{gameHeader(value.length + 1)} digit</strong> to it.
+	</h2>
 	<br />
-	<button on:click={() => say_num(shift_digit)}>Repeat Shift Digit</button>
+	<button on:click={() => say_num(shift_digit)}
+		>Repeat {gameHeader(value.length + 1)} Shift Value</button
+	>
 {:else}
+	<h1>Headphone Shift</h1>
 	{#if show_pin}
 		<div>Entered PIN: {pin}</div>
 	{/if}
