@@ -12,6 +12,7 @@
 	import { GameState, rand_digit } from './logic';
 	import type { GetPointsResponse, CreateInstanceResponse, UpdateInstanceResponse } from './logic';
 	import Keypad from './Keypad.svelte';
+	let banner = '../src/routes/Banners_Headphone_Shift.jpg';
 
 	let value = '';
 	let pin = '';
@@ -175,7 +176,9 @@
 <!-- <h1>Headphone Shift</h1> -->
 
 {#if game_state === GameState.START}
-	<h1>Headphone Shift</h1>
+	<!-- <h1>Headphone Shift</h1> -->
+	<img src={banner} alt="Headphone Shift" />
+	<br />
 	<input
 		type="text"
 		placeholder="User ID"
@@ -219,7 +222,9 @@
 		>Repeat {gameHeader(value.length + 1)} Shift Value</button
 	>
 {:else}
-	<h1>Headphone Shift</h1>
+	<!-- <h1>Headphone Shift</h1> -->
+	<img src={banner} alt="Headphone Shift" />
+	<br />
 	{#if show_pin}
 		<div>Entered PIN: {pin}</div>
 	{/if}
@@ -251,9 +256,6 @@
 {/if}
 
 <style>
-	h1 {
-		width: 100%;
-	}
 	input {
 		font-size: 1em;
 	}
